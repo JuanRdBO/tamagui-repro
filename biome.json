@@ -1,0 +1,45 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "style": {
+        "useImportType": "off",
+        "noUselessElse": "off",
+        "useTemplate": "off",
+        "noInferrableTypes": "off",
+        "noUnusedTemplateLiteral": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": "error"
+      },
+      "complexity": { "noForEach": "off" },
+      "suspicious": { "noArrayIndexKey": "off" }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 110,
+    "lineEnding": "lf",
+    "ignore": []
+  },
+  "files": {
+    "ignore": [
+      "node_modules",
+      "dist",
+      "build",
+      ".expo",
+      ".next",
+      ".turbo",
+      ".vercel"
+    ]
+  }
+}

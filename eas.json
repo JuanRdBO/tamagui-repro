@@ -1,0 +1,118 @@
+{
+  "cli": {
+    "appVersionSource": "remote",
+    "version": ">= 3.9.2"
+  },
+  "build": {
+    "dev-client": {
+      "resourceClass": "large",
+      "autoIncrement": false,
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleRelease",
+        "image": "latest"
+      },
+      "ios": {
+        "buildConfiguration": "Release",
+        "simulator": true,
+        "image": "latest"
+      },
+      "environment": "preview",
+      "env": {
+        "APP_ENV": "staging"
+      }
+    },
+    "development": {
+      "resourceClass": "large",
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "environment": "development",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "buildConfiguration": "Debug"
+      },
+      "env": {
+        "APP_ENV": "development"
+      }
+    },
+    "development-simulator": {
+      "resourceClass": "large",
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "environment": "development",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "simulator": true,
+        "buildConfiguration": "Debug"
+      },
+      "env": {
+        "APP_ENV": "development"
+      }
+    },
+    "production-simulator": {
+      "resourceClass": "large",
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "environment": "production",
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "APP_ENV": "production"
+      }
+    },
+    "development-apk": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "development-apk"
+    },
+    "staging": {
+      "resourceClass": "large",
+      "autoIncrement": true,
+      "channel": "staging",
+      "environment": "preview",
+      "env": {
+        "APP_ENV": "staging"
+      }
+    },
+    "production": {
+      "resourceClass": "large",
+      "autoIncrement": true,
+      "channel": "release",
+      "environment": "production",
+      "env": {
+        "APP_ENV": "production"
+      }
+    }
+  },
+  "submit": {
+    "staging": {
+      "android": {
+        "track": "internal"
+      },
+      "ios": {
+        "ascAppId": "6636466594"
+      }
+    },
+    "production": {
+      "extends": "staging",
+      "ios": {
+        "ascAppId": "1616564038"
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+diff --git a/node_modules/react-native-bottom-tabs/android/src/main/java/com/rcttabview/RCTTabView.kt b/node_modules/react-native-bottom-tabs/android/src/main/java/com/rcttabview/RCTTabView.kt
+index 7ed9d53..11f5eb7 100644
+--- a/node_modules/react-native-bottom-tabs/android/src/main/java/com/rcttabview/RCTTabView.kt
++++ b/node_modules/react-native-bottom-tabs/android/src/main/java/com/rcttabview/RCTTabView.kt
+@@ -33,6 +33,8 @@ import com.google.android.material.navigation.NavigationBarView.LABEL_VISIBILITY
+ import com.google.android.material.navigation.NavigationBarView.LABEL_VISIBILITY_LABELED
+ import com.google.android.material.navigation.NavigationBarView.LABEL_VISIBILITY_UNLABELED
+ import com.google.android.material.transition.platform.MaterialFadeThrough
++import android.graphics.Color
++import com.google.android.material.badge.BadgeDrawable
+ 
+ class ReactBottomNavigationView(context: Context) : LinearLayout(context) {
+   private var bottomNavigation = BottomNavigationView(context)
+@@ -243,6 +245,7 @@ class ReactBottomNavigationView(context: Context) : LinearLayout(context) {
+         val badge = bottomNavigation.getOrCreateBadge(index)
+         badge.isVisible = true
+         badge.text = item.badge
++        badge.backgroundColor = Color.parseColor("#5b10a9")
+       } else {
+         bottomNavigation.removeBadge(index)
+       }
+diff --git a/node_modules/react-native-bottom-tabs/ios/TabViewImpl.swift b/node_modules/react-native-bottom-tabs/ios/TabViewImpl.swift
+index 9cc1b10..2e418b3 100644
+--- a/node_modules/react-native-bottom-tabs/ios/TabViewImpl.swift
++++ b/node_modules/react-native-bottom-tabs/ios/TabViewImpl.swift
+@@ -239,6 +239,8 @@ private func configureStandardAppearance(tabBar: UITabBar, props: TabViewProps)
+   }
+ 
+   itemAppearance.normal.titleTextAttributes = attributes
++  // Set badge background color #5b10a9
++  itemAppearance.normal.badgeBackgroundColor = UIColor(red: 0.356, green: 0.063, blue: 0.663, alpha: 1.0) // #5b10a9
+ 
+   // Apply item appearance to all layouts
+   appearance.stackedLayoutAppearance = itemAppearance

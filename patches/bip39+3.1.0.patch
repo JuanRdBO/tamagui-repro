@@ -1,0 +1,31 @@
+diff --git a/node_modules/bip39/src/index.js b/node_modules/bip39/src/index.js
+index b83863f..564d19c 100644
+--- a/node_modules/bip39/src/index.js
++++ b/node_modules/bip39/src/index.js
+@@ -36,22 +36,13 @@ function salt(password) {
+     return 'mnemonic' + (password || '');
+ }
+ function mnemonicToSeedSync(mnemonic, password) {
+-    const mnemonicBuffer = Uint8Array.from(Buffer.from(normalize(mnemonic), 'utf8'));
+-    const saltBuffer = Uint8Array.from(Buffer.from(salt(normalize(password)), 'utf8'));
+-    const res = pbkdf2_1.pbkdf2(sha512_1.sha512, mnemonicBuffer, saltBuffer, {
+-        c: 2048,
+-        dkLen: 64,
+-    });
+-    return Buffer.from(res);
++    const mnemonicBuffer = Uint8Array.from(Buffer.from(normalize(mnemonic), "utf8"));
++    const saltBuffer = Uint8Array.from(Buffer.from(salt(normalize(password)), "utf8"));
++    return Buffer.from(crypto.pbkdf2Sync(mnemonicBuffer, saltBuffer, 2048, 64, "sha512"));
+ }
+ exports.mnemonicToSeedSync = mnemonicToSeedSync;
+ function mnemonicToSeed(mnemonic, password) {
+-    const mnemonicBuffer = Uint8Array.from(Buffer.from(normalize(mnemonic), 'utf8'));
+-    const saltBuffer = Uint8Array.from(Buffer.from(salt(normalize(password)), 'utf8'));
+-    return pbkdf2_1.pbkdf2Async(sha512_1.sha512, mnemonicBuffer, saltBuffer, {
+-        c: 2048,
+-        dkLen: 64,
+-    }).then((res) => Buffer.from(res));
++    return mnemonicToSeedSync(mnemonic, password);
+ }
+ exports.mnemonicToSeed = mnemonicToSeed;
+ function mnemonicToEntropy(mnemonic, wordlist) {

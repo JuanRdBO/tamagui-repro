@@ -1,0 +1,32 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@app/*": ["app/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@utils/*": ["utils/*"],
+      "@locales/*": ["locales/*"],
+      "@hooks/*": ["hooks/*"],
+      "@themes/*": ["themes/*"],
+      "@providers/*": ["providers/*"],
+      "@store/*": ["store/*"],
+      "@sentry/*": ["logger/sentry/*"],
+      "@decafTypes/*": ["types/*"],
+      "@logger/*": ["logger/*"],
+      "@tests/*": ["tests/*"],
+      "@testsMocks/*": ["tests/__mocks__/*"],
+      "@env": ["./environment.ts"]
+    },
+    "esModuleInterop": true,
+    "checkJs": true
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts", "tests/__mocks__/locales.js", "tests/__mocks__/locales.js", "tests/__mocks__/locales.js"],
+  "exclude": ["oldApp/**/*", "components/**/*", "providers/**/*", "utils/**/*", "hooks/**/*"]
+}
